@@ -50,3 +50,7 @@ h2{
     padding: 0.5em;
     text-transform: capitalize;
 }
+
+.pokemon-info{
+    text-align: left;
+}
