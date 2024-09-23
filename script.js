@@ -44,12 +44,24 @@ async function getPokemonData(pokename) {
     const pokemonData = await response.json();
 
     const pokemonDiv = document.createElement('div');
-    pokemonDiv.innerHTML = `
-      <p>ID: ${pokemonData.id}</p>
-      <p>Nombre: ${pokemonData.name}</p>
+    pokemonDiv.classList.add('pokemon-entry');
+
+    const pokemonImageDiv = document.createElement('div');
+    pokemonImageDiv.classList.add('pokemon-image');
+    pokemonImageDiv.innerHTML = `
       <img src="${pokemonData.sprites.front_default}" alt="${pokemonData.name}">
-      <p>Tipos: ${pokemonData.types.map(typeInfo => typeInfo.type.name).join(', ')}</p>
     `;
+
+    const pokemonInfoDiv = document.createElement('div');
+    pokemonInfoDiv.classList.add('pokemon-info');
+    pokemonInfoDiv.innerHTML = `
+      <p>ID: ${pokemonData.id}</p>
+      <p>Name: ${pokemonData.name}</p>
+      <p>Type: ${pokemonData.types.map(typeInfo => typeInfo.type.name).join(', ')}</p>
+    `;
+
+    pokemonDiv.appendChild(pokemonImageDiv);
+    pokemonDiv.appendChild(pokemonInfoDiv);
 
     pokemonsContainer.appendChild(pokemonDiv);
 
